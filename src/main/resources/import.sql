@@ -3,3 +3,7 @@ insert into cozinha (id, nome) values (2, 'Indiana');
 
 insert into restaurante (nome, taxa_frete, cozinha_id) values ('La Ursa', 5.00, 1);
 insert into restaurante (nome, taxa_frete, cozinha_id) values ('Mineiro', 5.00, 2);
+
+insert into forma_pagamento (id, descricao) values (1, 'Cartão de crédito');
+insert into forma_pagamento (id, descricao) values (2, 'Cartão de débito');
+insert into forma_pagamento (id, descricao) values (3, 'Dinheiro');
