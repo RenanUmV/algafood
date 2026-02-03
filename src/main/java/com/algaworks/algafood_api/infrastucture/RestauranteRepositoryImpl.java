@@ -2,11 +2,13 @@ package com.algaworks.algafood_api.infrastucture;
 
 import com.algaworks.algafood_api.domain.model.Restaurante;
 import com.algaworks.algafood_api.domain.repository.RestauranteRepository;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Component
 public class RestauranteRepositoryImpl implements RestauranteRepository {
 
     @PersistenceContext
