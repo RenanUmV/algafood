@@ -1,9 +1,7 @@
 package com.algaworks.algafood_api.jpa;
 
 import com.algaworks.algafood_api.AlgafoodApiApplication;
-import com.algaworks.algafood_api.domain.model.FormaPagamento;
 import com.algaworks.algafood_api.domain.model.Permissao;
-import com.algaworks.algafood_api.domain.repository.FormaPagamentoRepository;
 import com.algaworks.algafood_api.domain.repository.PermissaoRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;

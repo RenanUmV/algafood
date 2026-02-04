@@ -1,9 +1,7 @@
 package com.algaworks.algafood_api.infrastucture;
 
 import com.algaworks.algafood_api.domain.model.Cidade;
-import com.algaworks.algafood_api.domain.model.Cozinha;
 import com.algaworks.algafood_api.domain.repository.CidadeRepository;
-import com.algaworks.algafood_api.domain.repository.CozinhaRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
