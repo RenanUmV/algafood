@@ -1,8 +1,11 @@
 package com.algaworks.algafood_api.api.controller;
 
 import com.algaworks.algafood_api.api.model.CozinhasXmlWrapper;
+import com.algaworks.algafood_api.domain.exception.EntidadeEmUsoException;
+import com.algaworks.algafood_api.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood_api.domain.model.Cozinha;
 import com.algaworks.algafood_api.domain.repository.CozinhaRepository;
+import com.algaworks.algafood_api.domain.service.CadastroCozinhaService;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,9 @@ public class CozinhaController {
     @Autowired
     private CozinhaRepository cozinhaRepository;
 
+    @Autowired
+    private CadastroCozinhaService cadastroCozinhaService;
+
     @GetMapping
     public List<Cozinha> listar(){
         return cozinhaRepository.listar();
@@ -54,7 +60,7 @@ public class CozinhaController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Cozinha adicionar(@RequestBody Cozinha cozinha){
-        return cozinhaRepository.salvar(cozinha);
+        return cadastroCozinhaService.salvar(cozinha);
     }
 
     @PutMapping("{cozinhaId}")
@@ -75,18 +81,16 @@ public class CozinhaController {
     @DeleteMapping("/{cozinhaId}")
     public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId){
         try{
-            Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
 
-            if (cozinha != null){
-                cozinhaRepository.remover(cozinha);
+            cadastroCozinhaService.excluir(cozinhaId);
 
-                return ResponseEntity.noContent().build();
-            }
+            return ResponseEntity.noContent().build();
 
+        } catch (EntidadeNaoEncontradaException e){
             return ResponseEntity.notFound().build();
-        } catch(DataIntegrityViolationException e){
+        }
+        catch(EntidadeEmUsoException e){
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
-
     }
 }
