@@ -1,6 +1,5 @@
 package com.algaworks.algafood_api.api.controller;
 
-import com.algaworks.algafood_api.api.model.CozinhasXmlWrapper;
 import com.algaworks.algafood_api.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood_api.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood_api.domain.model.Cozinha;
@@ -9,9 +8,7 @@ import com.algaworks.algafood_api.domain.service.CadastroCozinhaService;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,11 +36,6 @@ public class CozinhaController {
     @GetMapping
     public List<Cozinha> listar(){
         return cozinhaRepository.listar();
-    }
-
-    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    public CozinhasXmlWrapper listarXml(){
-        return new CozinhasXmlWrapper(cozinhaRepository.listar());
     }
 
     @GetMapping("/{cozinhaId}")
