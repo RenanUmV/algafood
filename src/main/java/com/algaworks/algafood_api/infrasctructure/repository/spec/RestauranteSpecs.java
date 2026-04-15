@@ -1,4 +1,4 @@
-package com.algaworks.algafood_api.infrasctructure.jpa.spec;
+package com.algaworks.algafood_api.infrasctructure.repository.spec;
 
 import com.algaworks.algafood_api.domain.model.Restaurante;
 import org.springframework.data.jpa.domain.Specification;
